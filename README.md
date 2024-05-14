@@ -4,7 +4,7 @@
 PetLove
 
 ## Tecnologias
-Linguagem de programação: Java
+Linguagem de programação: JavaScript
 IDE: NetBeans
 Banco de dados: MySQL Workbench
 
