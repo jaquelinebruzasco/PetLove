@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Produto - PetLove</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cadastro de Produto</h1>
+    <form id="formProduto">
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" name="preco" step="0.01" min="0" required>
+
+        <label for="estoque">Estoque:</label>
+        <input type="number" id="estoque" name="estoque" min="0" required>
+
+        <label for="fornecedor">Fornecedor:</label>
+        <select id="fornecedor" name="fornecedor" required>
+            <option value="">Selecione um fornecedor</option>
+            <option value="fornecedor1">Fornecedor 1</option>
+            <option value="fornecedor2">Fornecedor 2</option>
+        </select>
+
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">Selecione uma categoria</option>
+            <option value="ração">Ração</option>
+            <option value="acessorio">Acessório</option>
+            <option value="brinquedo">Brinquedo</option>
+        </select>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script src="script.js"></script>
+    <script src="scriptProdutos.js"></script>
+</body>
+</html>
