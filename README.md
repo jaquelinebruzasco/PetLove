@@ -22,7 +22,7 @@ Gerenciamento de estoque: O sistema permite controlar o estoque de produtos, ger
 Relatórios: O sistema permite gerar diversos relatórios, como relatórios de vendas, relatórios de estoque e relatórios de clientes.
 
 ## Executar o projeto
-1. Ir no root do project e executar mvn clean install
-2. Rodar o servidor executar: mvn clean spring-boot:run
-3. Estar com o servidor petlove_db rodando
+1. Ir no root do projeto e executar mvn clean install
+2. Para o servidor rodar: executar: mvn clean spring-boot:run
+3. Estar com o servidor petlove_db rodando utilizando MySQL
 4. Acessar localhost:8080 pelo browser para navegar no sistema.
