@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazer uma venda</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+        ul {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="index.html">PetLove</a>
+    </nav>
+    <div class="container">
+        <h1 class="text-center">Cadastre a Nova Venda</h1>
+
+        <!-- Form to add a sale -->
+        <form id="addSaleForm">
+            <div class="form-group">
+                <label for="produto_id">ID do Produto:</label>
+                <input type="number" class="form-control" id="produto_id" name="produto_id" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_total">Valor Total da Venda:</label>
+                <input type="number" class="form-control" id="valor_total" name="valor_total" step="0.01" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addSale()">Vender</button>
+        </form>
+
+        <!-- List of sales -->
+        <h2>Vendas</h2>
+        <ul id="salesList" class="list-group"></ul>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Function to add a sale
+        function addSale() {
+            const formData = new FormData(document.getElementById('addSaleForm'));
+
+            fetch('/api/vendas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Venda feita com sucesso');
+                listSales();
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        }
+
+        // Function to list all sales
+        function listSales() {
+            fetch('/api/vendas')
+                .then(response => response.json())
+                .then(data => {
+                    const salesList = document.getElementById('salesList');
+                    salesList.innerHTML = '';
+                    data.forEach(sale => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item';
+                        listItem.innerHTML = `ID: ${sale.id}, ID do produto: ${sale.produto_id}, Valor total: ${sale.valor_total} 
+                        <button class="btn btn-danger btn-sm float-right" onclick="deleteSale(${sale.id})">Excluir</button>`;
+                        salesList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+        }
+
+        // Function to delete a sale
+        function deleteSale(id) {
+            fetch(`/api/vendas/${id}`, {
+                method: 'DELETE'
+            })
+            .then(() => {
+                alert('Venda apagada com sucesso!');
+                listSales();
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        }
+
+        // Load sales on page load
+        document.addEventListener('DOMContentLoaded', listSales);
+    </script>
+</body>
+</html>

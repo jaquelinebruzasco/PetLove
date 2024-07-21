@@ -1,0 +1,8 @@
+com\mycompany\petlovebackend\DataSourceConfig.class
+com\mycompany\petlovebackend\PetLoveBackEndApplication.class
+com\mycompany\petlovebackend\model\Produto.class
+com\mycompany\petlovebackend\repository\VendaRepository.class
+com\mycompany\petlovebackend\controller\VendaController.class
+com\mycompany\petlovebackend\repository\ProdutoRepository.class
+com\mycompany\petlovebackend\controller\ProdutoController.class
+com\mycompany\petlovebackend\model\Venda.class
