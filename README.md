@@ -20,3 +20,9 @@ Cadastro de produtos: O sistema permite cadastrar e gerenciar os produtos vendid
 Controle de vendas: O sistema permite realizar vendas, registrar pagamentos, emitir notas fiscais e gerar relatórios de vendas.
 Gerenciamento de estoque: O sistema permite controlar o estoque de produtos, gerar alertas de estoque baixo e realizar pedidos de compra.
 Relatórios: O sistema permite gerar diversos relatórios, como relatórios de vendas, relatórios de estoque e relatórios de clientes.
+
+## Executar o projeto
+1. Ir no root do project e executar mvn clean install
+2. Rodar o servidor executar: mvn clean spring-boot:run
+3. Estar com o servidor petlove_db rodando
+4. Acessar localhost:8080 pelo browser para navegar no sistema.
